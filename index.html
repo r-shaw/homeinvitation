@@ -3,99 +3,66 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Graha Pravesh • Ganesh Puja Invitation</title>
-  <meta name="description" content="A graceful, scroll‑animated 3D invitation for Graha Pravesh & Ganesh Puja."/>
+  <title>Graha Pravesh • Ganesh Puja — Scroll Story</title>
+  <meta name="description" content="Apple‑style scroll story invitation for Graha Pravesh & Ganesh Puja with 3D laptop showcase and parallax sections."/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#fff7ef;
-      --ink:#1f2937;
-      --ink-soft:#475569;
-      --gold:#e6ac00;
-      --saffron:#f59e0b;
-      --pink:#ef476f;
-      --maroon:#8b2252;
-      --violet:#7c3aed;
-      --glass:rgba(255,255,255,.6);
-      --radius:22px;
-      --shadow:0 10px 30px rgba(0,0,0,.15);
-    }
+    :root{ --bg:#fff7ef; --ink:#1f2937; --ink-soft:#475569; --accent:#a21caf; --saffron:#f59e0b; --glass:rgba(255,255,255,.65); --shadow:0 12px 38px rgba(0,0,0,.18); --radius:26px; }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{
-      margin:0; background:radial-gradient(1200px 800px at 80% 0%, #ffe8d1 0%, transparent 60%),
-                                 radial-gradient(900px 600px at 20% 20%, #ffeef0 0%, transparent 55%),
-                                 linear-gradient(135deg,#fff7ef,#ffe6cf);
-      color:var(--ink); font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; overflow-x:hidden;
-    }
-    a{color:inherit}
+    body{ margin:0; background:radial-gradient(1200px 800px at 80% 0%, #ffe8d1, transparent 60%), radial-gradient(900px 600px at 20% 25%, #ffeef0, transparent 55%), linear-gradient(135deg,#fff7ef,#ffe6cf); color:var(--ink); font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; overflow-x:hidden }
+    a{color:inherit; text-decoration:none}
 
-    /* Global sections */
     section{min-height:100svh; display:grid; place-items:center; position:relative; padding:80px 24px}
     .inner{width:min(1200px,92vw)}
 
-    /* Nav */
-    .nav{
-      position:fixed; inset:auto 0 20px; display:flex; justify-content:center; z-index:50; pointer-events:none;
-    }
-    .nav .bar{
-      pointer-events:auto; display:flex; gap:10px; padding:10px; border-radius:999px; backdrop-filter:blur(8px);
-      background:linear-gradient(180deg,rgba(255,255,255,.8),rgba(255,255,255,.55)); border:1px solid rgba(0,0,0,.06);
-      box-shadow:var(--shadow);
-    }
-    .nav a{ text-decoration:none; font-weight:700; font-size:13px; padding:10px 14px; border-radius:999px; border:1px solid rgba(0,0,0,.06); background:rgba(255,255,255,.9)}
-    .nav a.active{ background:linear-gradient(135deg,#ffd8a8,#ffcfe6); }
+    .nav{ position:fixed; inset:auto 0 20px; display:flex; justify-content:center; z-index:50; pointer-events:none }
+    .nav .bar{ pointer-events:auto; display:flex; gap:10px; padding:10px; border-radius:999px; backdrop-filter:blur(8px); background:linear-gradient(180deg,rgba(255,255,255,.85),rgba(255,255,255,.55)); border:1px solid rgba(0,0,0,.06); box-shadow:var(--shadow) }
+    .nav a{ font-weight:700; font-size:13px; padding:10px 14px; border-radius:999px; border:1px solid rgba(0,0,0,.06); background:rgba(255,255,255,.9) }
+    .nav a.active{ background:linear-gradient(135deg,#ffd8a8,#ffcfe6) }
 
-    /* Floating diya petals */
     .petal{position:fixed; top:-10vh; pointer-events:none; opacity:.35; filter:blur(.2px)}
     @keyframes fall{0%{transform:translateY(-10vh) translateX(0) rotate(0); opacity:.2}100%{transform:translateY(120vh) translateX(var(--drift,80px)) rotate(360deg); opacity:.45}}
 
-    /* HERO with parallax layers */
     .hero{ padding-top:0 }
-    .hero .stage{ position:relative; height:100svh; border-radius:0; overflow:hidden }
+    .stage{ position:relative; height:100svh; overflow:hidden }
     .layer{ position:absolute; inset:0 }
-    .layer img{ width:100%; height:100%; object-fit:cover; object-position:center }
-    .layer.overlay{ background:radial-gradient(65% 50% at 50% 20%, rgba(255,255,255,.45), transparent 60%), linear-gradient(180deg, rgba(255,255,255,.45), rgba(255,255,255,.05))}
+    .layer img{ width:100%; height:100%; object-fit:cover; object-position:center; filter:saturate(1.05) }
+    .overlay{ background:radial-gradient(65% 50% at 50% 20%, rgba(255,255,255,.45), transparent 60%), linear-gradient(180deg, rgba(255,255,255,.45), rgba(255,255,255,.05))}
 
-    .hero .card{
-      position:absolute; left:50%; top:52%; transform:translate(-50%,-50%) perspective(1200px) rotateX(var(--rx,0)) rotateY(var(--ry,0)) translateZ(0);
-      width:min(920px,94vw); background:var(--glass); border:1px solid rgba(255,255,255,.7); border-radius:28px; backdrop-filter:blur(10px); box-shadow:var(--shadow);
-      padding:26px; text-align:center;
-    }
-    .hero h1{ font-family:"Playfair Display",serif; font-weight:800; font-size:clamp(36px,6vw,64px); margin:4px 0 8px; color:#a21caf; text-shadow:0 1px 0 #fff }
-    .hero .shloka{ font-family:"Playfair Display",serif; color:#7c2d12; letter-spacing:.4px; font-weight:700 }
-    .hero .meta{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:12px }
+    .hero .card{ position:absolute; left:50%; top:52%; transform:translate(-50%,-50%); width:min(920px,94vw); background:var(--glass); border:1px solid rgba(255,255,255,.7); border-radius:28px; backdrop-filter:blur(10px); box-shadow:var(--shadow); padding:26px; text-align:center }
+    .shloka{ font-family:"Playfair Display",serif; color:#7c2d12; letter-spacing:.4px; font-weight:700 }
+    h1{ font-family:"Playfair Display",serif; font-weight:800; font-size:clamp(36px,6vw,64px); margin:4px 0 8px; color:var(--accent); text-shadow:0 1px 0 #fff }
+    .meta{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:12px }
     .chip{ font-size:12px; padding:8px 12px; border-radius:999px; background:rgba(255,255,255,.9); border:1px solid rgba(0,0,0,.06) }
 
-    /* Generic glass card */
+    /* Sticky device showcase */
+    .device-section{ --h: 92svh; height: calc(var(--h) * 4); }
+    .device-pin{ position:sticky; top:4svh; height:var(--h); display:grid; place-items:center }
+    .device-wrap{ width:min(960px, 94vw); aspect-ratio:16/10; position:relative; transform:scale(var(--scale, .8)); transition:transform .6s ease }
+    .device-frame{ position:absolute; inset:0; filter:drop-shadow(0 18px 40px rgba(0,0,0,.22)) }
+    .device-screen{ position:absolute; left:5.2%; top:7.8%; width:89.6%; height:74%; overflow:hidden; border-radius:12px; background:#000 }
+    .device-screen img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .8s ease }
+    .device-screen img.active{ opacity:1 }
+
+    .stepper{ position:absolute; right:10px; top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:10px }
+    .dot{ width:10px; height:10px; border-radius:999px; background:rgba(255,255,255,.7); border:1px solid rgba(0,0,0,.2) }
+    .dot.active{ background:linear-gradient(135deg,#ffd8a8,#ffcfe6); box-shadow:0 0 0 4px rgba(162,28,175,.15) }
+
+    .step{ height:var(--h); display:grid; place-items:center }
+    .step .blurb{ width:min(820px,90vw); background:var(--glass); border:1px solid rgba(0,0,0,.06); border-radius:var(--radius); backdrop-filter:blur(8px); box-shadow:var(--shadow); padding:22px }
+    .step h3{ margin:.2rem 0 .4rem 0; font-family:"Playfair Display",serif; color:var(--accent); font-size:clamp(22px,2.6vw,30px) }
+    .step p{ margin:0; color:var(--ink-soft) }
+
+    .two-col{ display:grid; grid-template-columns:1.1fr .9fr; gap:18px }
+    @media (max-width:980px){ .two-col{ grid-template-columns:1fr } }
     .card{ background:var(--glass); border:1px solid rgba(0,0,0,.05); border-radius:var(--radius); backdrop-filter:blur(8px); box-shadow:var(--shadow) }
     .pad{ padding:20px }
 
-    /* Reveal on scroll */
     .reveal{ opacity:0; transform:translateY(24px) scale(.98); transition:opacity .6s ease, transform .6s ease }
     .reveal.show{ opacity:1; transform:none }
-
-    /* 3D tilt */
-    .tilt{ transform-style:preserve-3d; perspective:1000px }
-    .tilt > *{ transform:translateZ(40px) }
-
-    /* Sections styling */
-    .two-col{ display:grid; grid-template-columns:1.1fr .9fr; gap:18px }
-    @media (max-width:980px){ .two-col{ grid-template-columns:1fr } }
-
-    .list{ display:grid; gap:10px }
-    .item{ display:grid; grid-template-columns:40px 1fr; gap:12px; align-items:center; background:rgba(255,255,255,.85); border:1px solid rgba(0,0,0,.06); padding:12px 14px; border-radius:14px }
-    .item svg{ width:24px; height:24px }
-
-    .timeline{ position:relative; padding-left:20px }
-    .timeline::before{ content:""; position:absolute; left:8px; top:6px; bottom:6px; width:4px; background:linear-gradient(#f59e0b,#a21caf); border-radius:999px }
-    .t{ background:#fff; border:1px solid rgba(0,0,0,.06); padding:12px 14px; border-radius:14px; margin:10px 0 }
-
-    .gallery{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px }
-    .gallery .g{ height:220px; border-radius:16px; overflow:hidden; position:relative; transform:translateZ(0) }
-    .gallery img{ width:100%; height:100%; object-fit:cover; filter:saturate(1.05) contrast(1.02) }
 
     .footer{ text-align:center; color:#8a6a00; padding:30px 12px 60px; font-size:12px }
   </style>
@@ -103,29 +70,26 @@
 <body>
   <!-- floating petals -->
   <svg class="petal" width="32" height="32" viewBox="0 0 24 24" style="left:10%; animation:fall 20s linear infinite; --drift:-80px"><path fill="#f59e0b" d="M12 2c2.21 3.19 6 5 6 9a6 6 0 1 1-12 0c0-4 3.79-5.81 6-9Z"/></svg>
-  <svg class="petal" width="26" height="26" viewBox="0 0 24 24" style="left:36%; animation:fall 24s linear infinite; --drift:100px"><path fill="#ef476f" d="M12 2c2.21 3.19 6 5 6 9a6 6 0 1 1-12 0c0-4 3.79-5.81 6-9Z"/></svg>
-  <svg class="petal" width="22" height="22" viewBox="0 0 24 24" style="left:68%; animation:fall 26s linear infinite; --drift:-60px"><path fill="#7c3aed" d="M12 2c2.21 3.19 6 5 6 9a6 6 0 1 1-12 0c0-4 3.79-5.81 6-9Z"/></svg>
-  <svg class="petal" width="18" height="18" viewBox="0 0 24 24" style="left:84%; animation:fall 22s linear infinite; --drift:40px"><path fill="#f59e0b" d="M12 2c2.21 3.19 6 5 6 9a6 6 0 1 1-12 0c0-4 3.79-5.81 6-9Z"/></svg>
+  <svg class="petal" width="26" height="26" viewBox="0 0 24 24" style="left:36%; animation:fall 24s linear infinite; --drift:100px"><path fill="#a21caf" d="M12 2c2.21 3.19 6 5 6 9a6 6 0 1 1-12 0c0-4 3.79-5.81 6-9Z"/></svg>
+  <svg class="petal" width="22" height="22" viewBox="0 0 24 24" style="left:68%; animation:fall 26s linear infinite; --drift:-60px"><path fill="#ef476f" d="M12 2c2.21 3.19 6 5 6 9a6 6 0 1 1-12 0c0-4 3.79-5.81 6-9Z"/></svg>
 
-  <!-- navigation -->
   <nav class="nav">
     <div class="bar">
       <a href="#hero" class="dot active">Home</a>
-      <a href="#welcome" class="dot">Welcome</a>
-      <a href="#schedule" class="dot">Schedule</a>
+      <a href="#device" class="dot">Highlights</a>
       <a href="#venue" class="dot">Venue</a>
       <a href="#details" class="dot">Details</a>
       <a href="#gallery" class="dot">Gallery</a>
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO (Ganpati) -->
   <section id="hero" class="hero">
     <div class="stage" data-parallax>
-      <!-- Replace the image source below with your Ganpati Bappa artwork (wide 16:9 recommended) -->
-      <div class="layer" data-depth="0.15"><img src="assets/ganpati.png" alt="Ganpati Bappa" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 1200 700\'><defs><linearGradient id=\'g\' x1=\'0\' y1=\'0\' x2=\'1\' y2=\'1\'><stop stop-color=\'%23ffe7cc\'/><stop offset=\'1\' stop-color=\'%23ffd2e8\'/></linearGradient></defs><rect fill=\'url(%23g)\' width=\'100%\' height=\'100%\' /><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%23926\' font-size=\'46\' font-family=\'Poppins\'>Ganpati Image Placeholder</text></svg>'"></div>
+      <!-- Ganpati Bappa image (Unsplash) -->
+      <div class="layer" data-depth="0.15"><img src="https://images.unsplash.com/photo-1592488458925-2fe6d8b63e5b?q=80&w=1600&auto=format&fit=crop" alt="Ganpati Bappa"></div>
       <div class="layer overlay" data-depth="0"></div>
-      <div class="card tilt" id="heroCard">
+      <div class="card" id="heroCard">
         <div class="shloka">ॐ श्री गणेशाय नमः</div>
         <h1 id="title">Graha Pravesh & Ganesh Puja</h1>
         <div id="hostLine">You are lovingly invited by <b>[HOST NAMES]</b> to bless our new home with your presence.</div>
@@ -138,79 +102,52 @@
     </div>
   </section>
 
-  <!-- WELCOME -->
-  <section id="welcome">
-    <div class="inner two-col">
-      <div class="card pad reveal">
-        <h2 style="margin:0 0 6px 0; font-family:Playfair Display,serif; font-size:clamp(28px,3.8vw,42px); color:#a21caf">Welcome • हार्दिक निमंत्रण</h2>
-        <p style="margin:6px 0 8px 0; color:var(--ink-soft)">With the blessings of Ganpati Bappa, we are stepping into our new home. Your presence will make the auspicious day complete.</p>
-        <div class="list" style="margin-top:8px">
-          <div class="item"><svg viewBox="0 0 24 24"><path fill="#a21caf" d="M12 2L1 21h22L12 2m0 3.84L20.53 19H3.47L12 5.84M11 10v6h2v-6h-2m0 8v2h2v-2h-2z"/></svg><div><b>Shubh Muhurat</b><div id="muhurat">[MUHURAT WINDOW]</div></div></div>
-          <div class="item"><svg viewBox="0 0 24 24"><path fill="#f59e0b" d="M12 2C8.15 2 5 5.15 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.85-3.15-7-7-7m0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5"/></svg><div><b>Address</b><div id="address">[FULL ADDRESS LINE]</div></div></div>
-          <div class="item"><svg viewBox="0 0 24 24"><path fill="#ef476f" d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg><div><b>Events</b><div id="events">Puja • Aarti • Prasadam / Lunch • House Blessings</div></div></div>
+  <!-- APPLE-LIKE STICKY SHOWCASE -->
+  <section id="device" class="device-section">
+    <div class="device-pin">
+      <div class="device-wrap" id="deviceWrap">
+        <!-- SVG laptop frame -->
+        <svg class="device-frame" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid meet" aria-label="Laptop">
+          <defs>
+            <linearGradient id="bezel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#111318"/><stop offset="1" stop-color="#22242a"/></linearGradient>
+            <linearGradient id="base" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9ccd3"/><stop offset="1" stop-color="#aeb2ba"/></linearGradient>
+          </defs>
+          <rect x="80" y="60" width="1440" height="840" rx="36" fill="url(#bezel)"/>
+          <circle cx="800" cy="90" r="8" fill="#333"/>
+          <rect x="0" y="900" width="1600" height="60" rx="10" fill="url(#base)"/>
+          <rect x="120" y="900" width="1360" height="26" rx="8" fill="#d8dbe2"/>
+        </svg>
+        <!-- Screen images -->
+        <div class="device-screen" id="screen">
+          <img data-step="0" class="active" alt="Rangoli" src="https://images.unsplash.com/photo-1633701726777-1a6d3c9d5e65?q=80&w=1600&auto=format&fit=crop"/>
+          <img data-step="1" alt="Kalash" src="https://images.unsplash.com/photo-1608538469595-8c7306a184bf?q=80&w=1600&auto=format&fit=crop"/>
+          <img data-step="2" alt="Flower decor" src="https://images.unsplash.com/photo-1569968205182-0d3f30b3a0ee?q=80&w=1600&auto=format&fit=crop"/>
+          <img data-step="3" alt="Home interior" src="https://images.unsplash.com/photo-1560185008-b033106af2fb?q=80&w=1600&auto=format&fit=crop"/>
         </div>
-      </div>
-      <div class="reveal">
-        <div class="gallery">
-          <div class="g tilt"><img src="https://images.unsplash.com/photo-1608538469595-8c7306a184bf?q=80&w=1400&auto=format&fit=crop" alt="Diya"/></div>
-          <div class="g tilt"><img src="https://images.unsplash.com/photo-1627704313530-6fb1c80ad777?q=80&w=1400&auto=format&fit=crop" alt="Torans"/></div>
-          <div class="g tilt"><img src="https://images.unsplash.com/photo-1569968205182-0d3f30b3a0ee?q=80&w=1400&auto=format&fit=crop" alt="Flowers"/></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SCHEDULE -->
-  <section id="schedule">
-    <div class="inner two-col">
-      <div class="reveal">
-        <div class="card pad tilt">
-          <h2 style="margin:0 0 8px 0; font-family:Playfair Display,serif; font-size:clamp(26px,3.4vw,40px); color:#a21caf">Schedule</h2>
-          <div class="timeline">
-            <div class="t"><b>Puja</b> — [TIME] (Kalash Sthapana, Sankalpa)</div>
-            <div class="t"><b>Ganesh Aarti</b> — [TIME] (Modak Prasad)</div>
-            <div class="t"><b>Gruha Pravesh</b> — [TIME] (Dwar Poojan, Kokila Homam if applicable)</div>
-            <div class="t"><b>Lunch / Prasadam</b> — [TIME] (Satvik Veg)</div>
-            <div class="t"><b>House Tour</b> — [TIME] (Blessings & Photos)</div>
-          </div>
-        </div>
-      </div>
-      <div class="reveal">
-        <div class="card pad">
-          <h3 style="margin:0 0 8px 0">What to bring</h3>
-          <ul style="margin:0; padding-left:18px">
-            <li>Just your blessings and smiles 😊</li>
-            <li>Optional: a small diya or flowers for Aarti</li>
-          </ul>
-          <h3 style="margin:16px 0 8px 0">Dress code</h3>
-          <div>Traditional / Festive (saffron, red, gold tones recommended)</div>
-          <h3 style="margin:16px 0 8px 0">Parking & Access</h3>
-          <div>[PARKING NOTES / GATE CODE / ELEVATOR INFO]</div>
-        </div>
+        <div class="stepper" id="stepDots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
       </div>
     </div>
+    <div class="step"><div class="blurb"><h3>श्री गणेशाय नमः</h3><p>Begin with blessings. As you scroll, discover the auspicious details for our Graha Pravesh.</p></div></div>
+    <div class="step"><div class="blurb"><h3>Shubh Muhurat</h3><p><b id="muhurat">[MUHURAT WINDOW]</b> • Puja 10:00 • Aarti 12:30 • Lunch follows.</p></div></div>
+    <div class="step"><div class="blurb"><h3>Satvik Prasadam</h3><p>Enjoy homely, vegetarian offerings with sweets and fruits.</p></div></div>
+    <div class="step"><div class="blurb"><h3>New Home</h3><p>House tour and blessings. Your presence will complete our celebration.</p></div></div>
   </section>
 
-  <!-- VENUE -->
+  <!-- VENUE / INFO -->
   <section id="venue">
     <div class="inner two-col">
-      <div class="reveal">
-        <div class="card pad">
-          <h2 style="margin:0 0 8px 0; font-family:Playfair Display,serif; color:#a21caf">Venue</h2>
-          <div id="venueLine" style="font-weight:600">[FULL ADDRESS LINE]</div>
-          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px">
-            <a class="chip" id="mapLink" href="#" target="_blank" rel="noopener">Open in Google Maps</a>
-            <button class="chip" id="copyAddress" type="button">Copy Address</button>
-            <a class="chip" id="icsBtn" href="#" download>＋ Add to Calendar (.ics)</a>
-          </div>
-          <div style="margin-top:12px; color:var(--ink-soft)">Contact: <b id="phone">[HOST PHONE]</b> • <span id="email">[HOST EMAIL]</span></div>
+      <div class="card pad reveal">
+        <h2 style="margin:0 0 8px 0; font-family:Playfair Display,serif; color:var(--accent)">Venue</h2>
+        <div id="venueLine" style="font-weight:600">[FULL ADDRESS LINE]</div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px">
+          <a class="chip" id="mapLink" href="#" target="_blank" rel="noopener">Open in Google Maps</a>
+          <button class="chip" id="copyAddress" type="button">Copy Address</button>
+          <a class="chip" id="icsBtn" href="#" download>＋ Add to Calendar (.ics)</a>
         </div>
+        <div style="margin-top:12px; color:var(--ink-soft)">Contact: <b id="phone">[HOST PHONE]</b> • <span id="email">[HOST EMAIL]</span></div>
       </div>
       <div class="reveal">
-        <div class="card" style="overflow:hidden; height:360px">
-          <!-- Map placeholder image. Replace with your own static map/screenshot if desired. -->
-          <img id="mapImg" alt="Map preview" style="width:100%; height:100%; object-fit:cover" src="https://images.unsplash.com/photo-1526779259212-939e64788e3c?q=80&w=1600&auto=format&fit=crop"/>
-        </div>
+        <div class="card" style="overflow:hidden; height:360px"><img id="mapImg" alt="Map preview" style="width:100%; height:100%; object-fit:cover" src="https://images.unsplash.com/photo-1526779259212-939e64788e3c?q=80&w=1600&auto=format&fit=crop"/></div>
       </div>
     </div>
   </section>
@@ -219,17 +156,17 @@
   <section id="details">
     <div class="inner">
       <div class="card pad reveal">
-        <h2 style="margin:0 0 8px 0; font-family:Playfair Display,serif; color:#a21caf">Additional Details</h2>
+        <h2 style="margin:0 0 8px 0; font-family:Playfair Display,serif; color:var(--accent)">Additional Details</h2>
         <div class="two-col">
           <div>
-            <div class="item"><svg viewBox="0 0 24 24"><path fill="#a21caf" d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm1 15h-2v-2h2Zm0-4h-2V7h2Z"/></svg><div><b>Priest / Pandit</b><div id="priest">[PANDIT NAME • LANGUAGE]</div></div></div>
-            <div class="item"><svg viewBox="0 0 24 24"><path fill="#f59e0b" d="M12 20a8 8 0 1 1 8-8a8.011 8.011 0 0 1-8 8m0-14a6 6 0 1 0 6 6a6.007 6.007 0 0 0-6-6Z"/></svg><div><b>Gotra / Family</b><div id="gotra">[GOTRA • FAMILY SURNAME]</div></div></div>
-            <div class="item"><svg viewBox="0 0 24 24"><path fill="#ef476f" d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg><div><b>Notes</b><div id="notes">[NO SHOES INSIDE • DIYA SAFETY • LIFT ACCESS]</div></div></div>
+            <div style="margin:.2rem 0"><b>Priest / Pandit</b>: <span id="priest">[PANDIT NAME • LANGUAGE]</span></div>
+            <div style="margin:.2rem 0"><b>Gotra / Family</b>: <span id="gotra">[GOTRA • FAMILY SURNAME]</span></div>
+            <div style="margin:.2rem 0"><b>Notes</b>: <span id="notes">[NO SHOES INSIDE • DIYA SAFETY • LIFT ACCESS]</span></div>
           </div>
           <div>
-            <div class="item"><svg viewBox="0 0 24 24"><path fill="#7c3aed" d="M12 2C7.03 2 3 6.03 3 11c0 5.25 7 11 9 11s9-5.75 9-11c0-4.97-4.03-9-9-9Z"/></svg><div><b>Landmarks</b><div id="landmark">[NEARBY TEMPLE / PARK / CROSS STREETS]</div></div></div>
-            <div class="item"><svg viewBox="0 0 24 24"><path fill="#22c55e" d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm1 15h-2v-2h2Zm0-4h-2V7h2Z"/></svg><div><b>Safety</b><div id="safety">[HAND SANITIZER • MASK OPTIONAL • ALLERGENS]</div></div></div>
-            <div class="item"><svg viewBox="0 0 24 24"><path fill="#0ea5e9" d="M12 3l4 8l9 1l-6.5 6.3L20 27l-8-4.2L4 27l1.5-8.7L-1 12l9-1z"/></svg><div><b>Photography</b><div id="photo">[WELCOME • HASHTAG #GRAHAPRAVESH]</div></div></div>
+            <div style="margin:.2rem 0"><b>Landmarks</b>: <span id="landmark">[NEARBY TEMPLE / CROSS STREETS]</span></div>
+            <div style="margin:.2rem 0"><b>Safety</b>: <span id="safety">[HAND SANITIZER • ALLERGEN INFO]</span></div>
+            <div style="margin:.2rem 0"><b>Photography</b>: <span id="photo">[WELCOME • HASHTAG #GRAHAPRAVESH]</span></div>
           </div>
         </div>
       </div>
@@ -239,8 +176,8 @@
   <!-- GALLERY / END CARD -->
   <section id="gallery">
     <div class="inner reveal">
-      <div class="card pad tilt" style="text-align:center">
-        <h2 style="margin:0 0 6px 0; font-family:Playfair Display,serif; color:#a21caf">See you soon!</h2>
+      <div class="card pad" style="text-align:center">
+        <h2 style="margin:0 0 6px 0; font-family:Playfair Display,serif; color:var(--accent)">See you soon!</h2>
         <p style="margin:6px 0 10px 0; color:var(--ink-soft)">कृपया सपरिवार पधारें • Jai Shri Ganesh</p>
         <div class="meta" style="justify-content:center">
           <span class="chip" id="countdown">—</span>
@@ -250,119 +187,32 @@
     </div>
   </section>
 
-  <footer class="footer">Designed with love • Replace the placeholders in the CONFIG below and add your Ganpati image at <code>assets/ganpati.png</code>.</footer>
+  <footer class="footer">Replace placeholders in the CONFIG below. Images are royalty‑free from Unsplash.</footer>
 
   <script>
-    // ======== QUICK CONFIG (edit these!) ========
-    const CONFIG = {
-      title: 'Graha Pravesh & Ganesh Puja',
-      hosts: 'Rohit & Family',
-      dateISO: '2025-10-12T10:00:00', // local start datetime
-      endISO:  '2025-10-12T14:00:00',
-      muhurat: '10:00 AM – 12:30 PM',
-      timeWindow: 'Puja 10:00 • Aarti 12:30 • Lunch follows',
-      address: '1234 New Home Ave, Plano, TX 75024',
-      city: 'Plano, TX',
-      phone: '+1 (555) 012‑3456',
-      email: 'host@example.com',
-      mapQuery: '1234 New Home Ave, Plano, TX 75024',
-      whatsapp: 'You are invited to our Graha Pravesh & Ganesh Puja! 🪔\nDate: 12 Oct 2025\nTime: 10 AM\nVenue: 1234 New Home Ave, Plano, TX 75024\nJoin us with your blessings.'
-    };
+    const CONFIG = { title:'Graha Pravesh & Ganesh Puja', hosts:'Rohit & Family', dateISO:'2025-10-12T10:00:00', endISO:'2025-10-12T14:00:00', muhurat:'10:00 AM – 12:30 PM', timeWindow:'Puja 10:00 • Aarti 12:30 • Lunch follows', address:'1234 New Home Ave, Plano, TX 75024', city:'Plano, TX', phone:'+1 (555) 012‑3456', email:'host@example.com', mapQuery:'1234 New Home Ave, Plano, TX 75024', whatsapp:'You are invited to our Graha Pravesh & Ganesh Puja! 🪔\nDate: 12 Oct 2025\nTime: 10 AM\nVenue: 1234 New Home Ave, Plano, TX 75024\nJoin us with your blessings.' };
 
-    // ======== Utilities ========
-    const $ = (s, p=document)=>p.querySelector(s);
-    const $$ = (s, p=document)=>[...p.querySelectorAll(s)];
-    function fmtDate(iso){
-      const d=new Date(iso); const opts={weekday:'long', year:'numeric', month:'long', day:'numeric'}; return d.toLocaleDateString(undefined,opts);
-    }
-    function fmtTimeRange(a,b){
-      const s=new Date(a), e=new Date(b), f={hour:'numeric', minute:'2-digit'}; return `${s.toLocaleTimeString([],f)} – ${e.toLocaleTimeString([],f)}`;
-    }
-    function makeICS(){
-      const uid = Math.random().toString(36).slice(2);
-      const dt = (d)=> new Date(d).toISOString().replace(/[-:]/g,'').replace(/\.\d{3}Z/,'Z');
-      return `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//GrahaPravesh//Invitation//EN\nBEGIN:VEVENT\nUID:${uid}@inv\nDTSTAMP:${dt(Date.now())}\nDTSTART:${dt(CONFIG.dateISO)}\nDTEND:${dt(CONFIG.endISO)}\nSUMMARY:${CONFIG.title}\nLOCATION:${CONFIG.address}\nDESCRIPTION:${CONFIG.whatsapp}\nEND:VEVENT\nEND:VCALENDAR`;
-    }
+    const $=(s,p=document)=>p.querySelector(s); const $$=(s,p=document)=>[...p.querySelectorAll(s)];
+    function fmtDate(iso){const d=new Date(iso);return d.toLocaleDateString(undefined,{weekday:'long',year:'numeric',month:'long',day:'numeric'})}
+    function fmtTimeRange(a,b){const s=new Date(a),e=new Date(b),f={hour:'numeric',minute:'2-digit'};return `${s.toLocaleTimeString([],f)} – ${e.toLocaleTimeString([],f)}`}
+    function makeICS(){const uid=Math.random().toString(36).slice(2);const dt=d=>new Date(d).toISOString().replace(/[-:]/g,'').replace(/\.\d{3}Z/,'Z');return `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//GrahaPravesh//Invitation//EN\nBEGIN:VEVENT\nUID:${uid}@inv\nDTSTAMP:${dt(Date.now())}\nDTSTART:${dt(CONFIG.dateISO)}\nDTEND:${dt(CONFIG.endISO)}\nSUMMARY:${CONFIG.title}\nLOCATION:${CONFIG.address}\nDESCRIPTION:${CONFIG.whatsapp}\nEND:VEVENT\nEND:VCALENDAR`}
 
-    // ======== Populate text ========
-    $('#title').textContent = CONFIG.title;
-    $('#hostLine').innerHTML = `You are lovingly invited by <b>${CONFIG.hosts}</b> to bless our new home with your presence.`;
-    $('#dateChip').textContent = fmtDate(CONFIG.dateISO);
-    $('#timeChip').textContent = CONFIG.timeWindow || fmtTimeRange(CONFIG.dateISO, CONFIG.endISO);
-    $('#cityChip').textContent = CONFIG.city;
-    $('#muhurat').textContent = CONFIG.muhurat;
-    $('#address').textContent = CONFIG.address;
-    $('#venueLine').textContent = CONFIG.address;
-    $('#phone').textContent = CONFIG.phone; $('#email').textContent = CONFIG.email;
+    $('#title').textContent=CONFIG.title; $('#hostLine').innerHTML=`You are lovingly invited by <b>${CONFIG.hosts}</b> to bless our new home with your presence.`; $('#dateChip').textContent=fmtDate(CONFIG.dateISO); $('#timeChip').textContent=CONFIG.timeWindow||fmtTimeRange(CONFIG.dateISO,CONFIG.endISO); $('#cityChip').textContent=CONFIG.city; $('#muhurat').textContent=CONFIG.muhurat; $('#venueLine').textContent=CONFIG.address; $('#phone').textContent=CONFIG.phone; $('#email').textContent=CONFIG.email;
 
-    // Countdown
-    function updateCountdown(){
-      const now=Date.now(); const t=new Date(CONFIG.dateISO).getTime(); const diff=t-now;
-      if(diff<=0){ $('#countdown').textContent = 'Auspicious day has begun!'; return; }
-      const d=Math.floor(diff/86400000), h=Math.floor(diff%86400000/3600000), m=Math.floor(diff%3600000/60000);
-      $('#countdown').textContent = `${d}d ${h}h ${m}m`;
-    }
-    updateCountdown(); setInterval(updateCountdown, 60000);
+    function updateCountdown(){const now=Date.now();const t=new Date(CONFIG.dateISO).getTime();const diff=t-now;if(diff<=0){$('#countdown').textContent='Auspicious day has begun!';return}const d=Math.floor(diff/86400000),h=Math.floor(diff%86400000/3600000),m=Math.floor(diff%3600000/60000);$('#countdown').textContent=`${d}d ${h}h ${m}m`} updateCountdown(); setInterval(updateCountdown,60000);
 
-    // Links
-    $('#mapLink').href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CONFIG.mapQuery)}`;
-    $('#whShare').href = `https://wa.me/?text=${encodeURIComponent(CONFIG.whatsapp + '\n' + location.href)}`;
-    $('#icsBtn').href = URL.createObjectURL(new Blob([makeICS()], {type:'text/calendar'}));
-    $('#icsBtn').download = 'graha-pravesh.ics';
+    $('#mapLink').href=`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CONFIG.mapQuery)}`; $('#whShare').href=`https://wa.me/?text=${encodeURIComponent(CONFIG.whatsapp+'\n'+location.href)}`; $('#icsBtn').href=URL.createObjectURL(new Blob([makeICS()],{type:'text/calendar'})); $('#icsBtn').download='graha-pravesh.ics';
 
-    // Copy address
-    $('#copyAddress').addEventListener('click', async()=>{
-      try { await navigator.clipboard.writeText(CONFIG.address); $('#copyAddress').textContent='Copied ✓'; setTimeout(()=>$('#copyAddress').textContent='Copy Address',1500); } catch(e){}
-    });
+    $('#copyAddress').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(CONFIG.address); $('#copyAddress').textContent='Copied ✓'; setTimeout(()=>$('#copyAddress').textContent='Copy Address',1500)}catch(e){}});
 
-    // ======== Intersection Observer for reveals ========
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target) } })
-    }, {threshold:.18});
-    $$('.reveal').forEach(el=>io.observe(el));
+    const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show'); io.unobserve(e.target)}})},{threshold:.18}); $$('.reveal').forEach(el=>io.observe(el));
 
-    // ======== Scroll spy ========
-    const sections = ['hero','welcome','schedule','venue','details','gallery'];
-    const spy = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          $$('.nav a').forEach(a=>a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id))
-        }
-      })
-    }, {rootMargin:'-40% 0% -55% 0%', threshold:0});
-    sections.forEach(id=> spy.observe(document.getElementById(id)));
+    const sections=['hero','device','venue','details','gallery']; const spy=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){ $$('.nav a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}})},{rootMargin:'-40% 0% -55% 0%',threshold:0}); sections.forEach(id=>spy.observe(document.getElementById(id)));
 
-    // ======== 3D tilt on hover ========
-    function attachTilt(el){
-      let rAF; const rect=()=>el.getBoundingClientRect();
-      function onMove(e){
-        cancelAnimationFrame(rAF); rAF=requestAnimationFrame(()=>{
-          const b=rect(); const x=(e.clientX-b.left)/b.width, y=(e.clientY-b.top)/b.height;
-          const rx=(y-.5)*10, ry=(x-.5)*-14;
-          el.style.setProperty('--rx', rx+'deg'); el.style.setProperty('--ry', ry+'deg');
-          el.style.transform = `translateZ(0) rotateX(${rx}deg) rotateY(${ry}deg)`;
-        })
-      }
-      function reset(){ el.style.transform=''; }
-      el.addEventListener('mousemove', onMove);
-      el.addEventListener('mouseleave', reset);
-    }
-    $$('.tilt').forEach(attachTilt);
+    const pStage=$('[data-parallax]'); const layers=$$('[data-depth]',pStage); function parallax(){const r=pStage.getBoundingClientRect(); const p=Math.min(1,Math.max(0,1-(r.top+r.height)/r.height)); layers.forEach(l=>{const d=parseFloat(l.dataset.depth||0); l.style.transform=`translateY(${p*d*80}px)`})} document.addEventListener('scroll',parallax,{passive:true}); parallax();
 
-    // ======== Parallax for hero layers (on scroll) ========
-    const pStage = $('[data-parallax]'); const layers = $$('[data-depth]', pStage);
-    function parallax(){
-      const r = pStage.getBoundingClientRect();
-      const p = Math.min(1, Math.max(0, 1 - (r.top + r.height)/r.height)); // 0 at top, 1 after passing
-      layers.forEach(l=>{ const d = parseFloat(l.dataset.depth||0); l.style.transform = `translateY(${p * d * 80}px)`; });
-      requestAnimationFrame(()=>{});
-    }
-    document.addEventListener('scroll', parallax, {passive:true}); parallax();
-
-    // ======== Smooth scroll for nav ========
-    $$('.nav a').forEach(a=>a.addEventListener('click', (e)=>{
-      e.preventDefault(); const id=a.getAttribute('href').slice(1); document.getElementById(id).scrollIntoView({behavior:'smooth'})
-    }));
+    const steps=$$('.step'); const screenImgs=$$('#screen img'); const dots=$$('#stepDots .dot'); let active=0; function setActive(i){if(i===active)return; screenImgs[active].classList.remove('active'); dots[active].classList.remove('active'); active=i; screenImgs[active].classList.add('active'); dots[active].classList.add('active'); const scale=0.8+i*0.06; document.getElementById('deviceWrap').style.setProperty('--scale',String(scale))}
+    const stepIO=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){const idx=$$('.step').indexOf(e.target); setActive(idx)}})},{rootMargin:'-45% 0% -45% 0%',threshold:0}); steps.forEach(s=>stepIO.observe(s));
   </script>
 </body>
 </html>
